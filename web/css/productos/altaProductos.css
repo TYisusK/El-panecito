@@ -1,0 +1,227 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estructura del cuerpo */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #D0C8BD;
+    color: #3D2312;
+}
+
+/* Header y Footer */
+header, footer {
+    background-color: #3D2312;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Contenido Principal */
+main.wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.form-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+/* Estilos para el formulario */
+.form-box h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #3D2312;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-column {
+    width: 48%;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.input-box label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 10px 15px;
+    background-color: #3D2312;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.input-box label:hover {
+    background-color: #261610;
+    transform: scale(1.05);
+}
+
+/* Iconos y campos */
+.input-box .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: #3D2312;
+}
+
+.input-box input,
+.input-box textarea {
+    width: 100%;
+    padding: 10px 5px 10px 35px;
+    font-size: 16px;
+    color: #3D2312;
+    border: 1px solid #D0C8BD;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-box input:focus,
+.input-box textarea:focus {
+    border-color: #3D2312;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.input-box textarea {
+    resize: none;
+    height: 120px;
+}
+
+.role-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.role-checkbox input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3D2312;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.role-checkbox input[type="checkbox"]:checked {
+    background-color: #3D2312;
+    border-color: #3D2312;
+}
+
+.role-checkbox input[type="checkbox"]:checked::before {
+    content: "✔";
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+/* Botón Guardar */
+.btnLog {
+    background-color: #3D2312;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 16px;
+}
+
+.btnLog:hover {
+    background-color: #261610;
+    transform: scale(1.05);
+}
+
+/* Botón de volver */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #3D2312;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+    color: #261610;
+    transform: scale(1.1);
+}
+/* Botón para subir archivos */
+.file-upload-btn {
+    display: inline-block;
+    background-color: #3D2312;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.file-upload-btn:hover {
+    background-color: #261610;
+    transform: scale(1.05);
+}
+
+/* Contenedor de previsualización de imágenes */
+.image-preview-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.image-preview-container img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #D0C8BD;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    .input-container {
+        flex-direction: column;
+    }
+
+    .input-column {
+        width: 100%;
+    }
+
+    .form-box {
+        padding: 20px;
+    }
+}

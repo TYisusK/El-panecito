@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración - Panadería Moderna</title>
+    <link rel="stylesheet" href="/web/css/usuarios/administacion.css">
+</head>
+<body>
+    <!-- Incluir Header -->
+    <%- include('../templates/header') %>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Panel de Administración</h1>
+                <p class="subtitle">Selecciona una opción para gestionar el contenido</p>
+            </div>
+            <div class="options">
+                <div class="option-card">
+                    <a href="/usuarios" class="option-link">
+                        <i class="fa fa-user fa-3x"></i>
+                        <h2>Administrar Usuarios</h2>
+                    </a>
+                </div>
+                <div class="option-card">
+                    <a href="/productos" class="option-link">
+                        <i class="fa fa-bread-slice fa-3x"></i>
+                        <h2>Administrar Productos</h2>
+                    </a>
+                </div>
+                <div class="option-card">
+                    <a href="/promociones" class="option-link">
+                        <i class="fa fa-gift fa-3x"></i>
+                        <h2>Administrar Promociones</h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incluir Footer -->
+    <%- include('../templates/footer') %>
+</body>
+</html>

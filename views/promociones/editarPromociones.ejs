@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Promoción</title>
+    <link rel="stylesheet" href="/web/css/promociones/editarPromo.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
+
+</head>
+
+<body>
+    <a href="/promociones" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    <div class="container">
+        <header>
+            <h1>Editar Promoción</h1>
+        </header>
+
+        <form action="/promociones/editar/<%= promocion.id %>" method="POST" enctype="multipart/form-data" class="form-edit">
+            <input type="hidden" name="id" value="<%= promocion.id %>">
+
+            <!-- Título de la promoción -->
+            <div class="form-group">
+                <label for="titulo">Título:</label>
+                <input type="text" name="titulo" id="titulo" value="<%= promocion.titulo %>" required>
+            </div>
+
+            <!-- Descripción de la promoción -->
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea name="descripcion" id="descripcion" rows="4" maxlength="200" required><%= promocion.descripcion %></textarea>
+                <small id="descripcion-help" class="form-text text-muted">Máximo 200 caracteres.</small>
+            </div>
+
+            <!-- Fecha de inicio -->
+            <div class="form-group">
+                <label for="fechaInicio">Fecha de Inicio:</label>
+                <input type="date" name="fechaInicio" id="fechaInicio" value="<%= promocion.fechaInicio %>" required>
+            </div>
+
+            <!-- Fecha final -->
+            <div class="form-group">
+                <label for="fechaFinal">Fecha Final:</label>
+                <input type="date" name="fechaFinal" id="fechaFinal" value="<%= promocion.fechaFinal %>" required>
+            </div>
+
+            <!-- Descuento -->
+            <div class="form-group">
+                <label for="descuento">Descuento:</label>
+                <input type="text" name="descuento" id="descuento" value="<%= promocion.descuento %>" required>
+            </div>
+            
+
+            <!-- Tipo de descuento (Porcentaje o Normal) -->
+            <div class="form-group">
+                <label for="tipoDescuento">Tipo de Descuento:</label>
+                <select name="tipoDescuento" id="tipoDescuento" onchange="toggleDescuentoType()">
+                    <option value="porcentaje" <%= promocion.tipoDescuento === 'porcentaje' ? 'selected' : '' %>>Porcentaje</option>
+                    <option value="normal" <%= promocion.tipoDescuento === 'normal' ? 'selected' : '' %>>Normal</option>
+                </select>
+            </div>
+
+           
+            <!-- Mostrar cantidad normal si es descuento normal -->
+            <div class="form-group" id="descuentoNormal" style="<%= promocion.tipoDescuento === 'normal' ? '' : 'display: none;' %>">
+                <label for="descuentoNormal">Descuento Normal:</label>
+                <input type="text" name="descuentoNormal" id="descuentoNormal" value="<%= promocion.descuento %>" required>
+            </div>
+
+            <!-- Visibilidad -->
+            <div class="form-group">
+                <label for="visible">Visible:</label>
+                <select name="visible" id="visible">
+                    <option value="on" <%= promocion.visible ? 'selected' : '' %>>Sí</option>
+                    <option value="off" <%= !promocion.visible ? 'selected' : '' %>>No</option>
+                </select>
+            </div>
+
+            <!-- Fotos -->
+            <div class="form-group">
+                <label for="fotos">Fotos (1 a 5):</label>
+                <input type="file" name="fotos" id="fotos" accept="image/*" multiple>
+            </div>
+
+            <div class="form-group">
+                <p>Fotos actuales:</p>
+                <div class="current-photos">
+                    <% promocion.fotos.forEach(foto => { %>
+                        <div class="photo-container">
+                            <img src="/uploads/promociones/<%= foto %>" alt="Foto de la promoción" class="current-photo">
+                            <input type="hidden" name="fotosViejas" value="<%= foto %>">
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+
+            <!-- Acciones -->
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Actualizar Promoción</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function toggleDescuentoType() {
+            const tipoDescuento = document.getElementById('tipoDescuento').value;
+            const descuentoPorcentaje = document.getElementById('descuentoPorcentaje');
+            const descuentoNormal = document.getElementById('descuentoNormal');
+
+            if (tipoDescuento === 'porcentaje') {
+                descuentoPorcentaje.style.display = 'block';
+                descuentoNormal.style.display = 'none';
+            } else {
+                descuentoPorcentaje.style.display = 'none';
+                descuentoNormal.style.display = 'block';
+            }
+        }
+
+        // Llamar a la función para inicializar la visibilidad de los campos
+        toggleDescuentoType();
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+/* Color de fondo principal y estilos básicos */
+body {
+    background-color: #F5F2ED;
+    font-family: 'Arial', sans-serif;
+    color: #3D2312;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #3D2312;
+    margin: 20px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 15px;
+}
+
+.tabla-carrito {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+}
+
+.tabla-carrito th, .tabla-carrito td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #3D2312;
+}
+
+.total-carrito {
+    text-align: right;
+    font-size: 1.2rem;
+    color: #3D2312;
+    margin: 20px 0;
+}
+
+.whatsapp-button a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.whatsapp-button a:hover {
+    background-color: #20b359;
+}
+
+.btn-eliminar {
+    background-color: red;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-eliminar:hover {
+    background-color: darkred;
+}
+
+@media (max-width: 768px) {
+    .tabla-carrito, .tabla-carrito th, .tabla-carrito td {
+        font-size: 0.9rem;
+    }
+
+    .total-carrito, .whatsapp-button a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tabla-carrito th, .tabla-carrito td {
+        padding: 8px;
+    }
+
+    .total-carrito, .whatsapp-button a {
+        font-size: 0.9rem;
+    }
+}

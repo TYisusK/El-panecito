@@ -1,0 +1,176 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F5F2ED;
+    color: #3D2312;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header h1 {
+    text-align: center;
+    color: #3D2312;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Acciones */
+.actions {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.btn-new {
+    background-color: #3D2312;
+    color: #ffffff;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-new:hover {
+    background-color: #5a3822;
+}
+
+/* Tabla */
+.promotions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.promotions-table th, .promotions-table td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.promotions-table th {
+    background-color: #3D2312;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.promotions-table td {
+    background-color: #ffffff;
+    font-size: 16px;
+}
+
+.promotions-table td a {
+    text-decoration: none;
+    color: #3D2312;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Iconos de botones */
+.btn-edit, .btn-delete {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.btn-edit {
+    background-color: #4CAF50;
+}
+
+.btn-edit:hover {
+    background-color: #45a049;
+}
+
+.btn-delete {
+    background-color: #f44336;
+}
+
+.btn-delete:hover {
+    background-color: #e53935;
+}
+
+/* Carrusel de imágenes */
+.carousel-container {
+    position: relative;
+    width: 200px;
+    height: 120px;
+    overflow: hidden;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-slide {
+    display: none;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.carousel-slide.active {
+    display: block;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .promotions-table th, .promotions-table td {
+        padding: 10px;
+    }
+
+    .promotions-table td {
+        font-size: 14px;
+    }
+
+    .btn-new, .btn-edit, .btn-delete {
+        font-size: 14px;
+    }
+
+    .carousel-container {
+        width: 150px;
+        height: 90px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    .promotions-table th, .promotions-table td {
+        padding: 8px;
+    }
+
+    .promotions-table td {
+        font-size: 12px;
+    }
+
+    .btn-new, .btn-edit, .btn-delete {
+        font-size: 12px;
+    }
+
+    .carousel-container {
+        width: 120px;
+        height: 70px;
+    }
+}

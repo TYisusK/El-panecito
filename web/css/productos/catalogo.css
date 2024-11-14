@@ -1,0 +1,139 @@
+/* Fondo principal */
+body {
+    background-color: #F5F2ED;
+    font-family: 'Arial', sans-serif;
+    color: #3D2312;
+    margin: 0;
+    padding: 0;
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    color: #3D2312;
+    margin: 20px 0;
+}
+
+/* Contenedor de todos los productos */
+.producto-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* Estilo para cada producto */
+.producto {
+    background-color: transparent;
+    padding: 20px;
+    width: 270px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin: 10px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 8px;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+}
+
+.producto h2 {
+    color: #3D2312;
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.producto p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Carrusel de imágenes */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.carousel-item {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.carousel-item.active {
+    display: block;
+    opacity: 1;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Botones de acciones con íconos */
+.producto-acciones {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+.btn-icon {
+    background-color: transparent;
+    border: none;
+    color: #3D2312;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.btn-icon:hover {
+    color: #5a3822;
+}
+
+
+.btn-icono {
+    background-color: #3D2312;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-icono:hover {
+    background-color: #5a3822;
+}
+
+.btn-icono:focus {
+    outline: none;
+    box-shadow: 0 0 5px #5a3822;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .producto {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .producto {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

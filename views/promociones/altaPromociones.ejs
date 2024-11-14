@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Nueva Promoción</title>
+    <link rel="stylesheet" href="/web/css/promociones/altaPromocion.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <a href="/promociones" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    <div class="container">
+        <header>
+            <h1>Agregar Nueva Promoción</h1>
+        </header>
+        
+        <form action="/promociones/nueva" method="POST" enctype="multipart/form-data" class="formulario">
+            <!-- Campo de Título -->
+            <div class="form-group">
+                <label for="titulo">Título:</label>
+                <input type="text" name="titulo" id="titulo" placeholder="Ingresa el título de la promoción" required>
+                <small class="feedback" id="titulo-feedback"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <input type="text" name="descripcion" id="descripcion" placeholder="Ingresa una descripción breve" required>
+                <small class="feedback" id="descripcion-feedback"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="fechaInicio">Fecha de Inicio:</label>
+                <input type="date" name="fechaInicio" id="fechaInicio" required>
+                <small class="feedback" id="fechaInicio-feedback"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="fechaFinal">Fecha Final:</label>
+                <input type="date" name="fechaFinal" id="fechaFinal" required>
+                <small class="feedback" id="fechaFinal-feedback"></small>
+            </div>
+
+            <!-- Campo de Descuento -->
+            <div class="form-group">
+                <label for="tipoDescuento">Tipo de Descuento:</label>
+                <select name="tipoDescuento" id="tipoDescuento" onchange="toggleDescuentoInput()" required>
+                    <option value="porcentaje">Descuento en %</option>
+                    <option value="promocion">Promoción personalizada</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="descuento-group">
+                <label for="descuento">Descuento:</label>
+                <input type="text" name="descuento" id="descuento" placeholder="Ej: 10%" required>
+                <small class="feedback" id="descuento-feedback"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="visible">Visible:</label>
+                <select name="visible" id="visible">
+                    <option value="on">Sí</option>
+                    <option value="off">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="fotos">Fotos (1 a 5):</label>
+                <input type="file" name="fotos" id="fotos" accept="image/*" multiple onchange="previewImages()">
+                <small class="feedback" id="fotos-feedback"></small>
+            </div>
+
+            <div class="form-group" id="image-preview-container">
+                <!-- Las imágenes cargadas se mostrarán aquí -->
+            </div>
+
+            <button type="submit" class="btn-submit">Guardar Promoción</button>
+        </form>
+    </div>
+
+    <script>
+        function previewImages() {
+            const previewContainer = document.getElementById("image-preview-container");
+            previewContainer.innerHTML = '';
+
+            const files = document.getElementById("fotos").files;
+
+            if (files.length > 0) {
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        const img = document.createElement("img");
+                        img.src = e.target.result;
+                        img.classList.add("preview-img");
+                        previewContainer.appendChild(img);
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+
+        function toggleDescuentoInput() {
+            const descuentoInput = document.getElementById("descuento");
+            const tipoDescuento = document.getElementById("tipoDescuento").value;
+
+            if (tipoDescuento === "porcentaje") {
+                descuentoInput.placeholder = "Ej: 10%";
+            } else {
+                descuentoInput.placeholder = "Especifica la promoción";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #D0C8BD;
+    color: #3D2312;
+    position: relative;
+}
+
+/* Botón de volver */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #3D2312;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+    color: #261610;
+    transform: scale(1.1);
+}
+
+/* Wrapper */
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+/* Caja del formulario */
+.form-box {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+}
+
+.form-box h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #3D2312;
+}
+
+/* Mensaje de no disponibilidad */
+.not-available-message {
+    color: #6A5B53;
+    font-size: 14px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #EFE9E3;
+    border-radius: 8px;
+}
+
+/* Caja de entrada */
+.input-box {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.input-box .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: #3D2312;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px 5px 10px 35px; /* Espacio para el ícono */
+    font-size: 16px;
+    color: #3D2312;
+    border: 1px solid #D0C8BD;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-box input:focus {
+    border-color: #3D2312;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de inicio de sesión */
+.btnLog {
+    width: 100%;
+    background-color: #3D2312;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btnLog:hover {
+    background-color: #261610;
+    transform: scale(1.05);
+}
+
+/* Texto de registro */
+.login-register {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.login-register a {
+    color: #3D2312;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.login-register a:hover {
+    color: #261610;
+    transform: scale(1.1);
+}
+
+/* Media queries para responsividad */
+@media (max-width: 480px) {
+    .form-box {
+        padding: 20px;
+    }
+
+    .form-box h2 {
+        font-size: 24px;
+    }
+
+    .btnLog {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .input-box input {
+        font-size: 14px;
+        padding: 8px 5px 8px 35px;
+    }
+
+    .back-button {
+        top: 15px;
+        left: 15px;
+        font-size: 20px;
+    }
+}

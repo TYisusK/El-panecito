@@ -1,0 +1,75 @@
+/* Estilo del Header */
+header {
+  background-color: #C6AD9A; /* Dorado suave para un toque elegante */
+  color: #3D2312; /* Texto en un tono marrón oscuro */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px; /* Añadir espacio en los laterales */
+  height: 100px; /* Establece la altura fija del header */
+}
+
+/* Contenedor del logo */
+header .logo-container {
+  display: flex;
+  align-items: center;
+  height: 100%; /* Asegura que el contenedor del logo no sea más alto que el header */
+}
+
+/* Logo (haciendo la imagen más grande sin afectar el header) */
+header .logo-container img {
+  width: 250px; /* Tamaño del logo */
+  height: auto; /* Mantiene la proporción de la imagen */
+  margin-right: 10px;
+  max-height: 100%; /* Limita la altura máxima del logo para que no sea mayor que la altura del header */
+}
+
+/* Navegación del Header */
+header nav {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo de los enlaces de navegación */
+header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+header nav ul li {
+  margin-left: 20px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #3D2312; /* Color de texto en marrón oscuro */
+  font-size: 20px;
+  transition: color 0.3s ease, transform 0.3s ease; /* Añadir la transición para el agrandado */
+  display: flex;
+  align-items: center;
+}
+
+header nav ul li a:hover {
+  color: #5a3822; /* Color más claro al pasar el cursor */
+}
+
+/* Estilo de los íconos */
+header nav ul li a i {
+  margin-right: 8px; /* Espacio entre el ícono y el texto */
+  transition: transform 0.3s ease; /* Animación suave al agrandar */
+}
+
+/* Diseño de los íconos */
+header nav ul li a.cerrar-sesion i,
+header nav ul li a.usuarios i,
+header nav ul li a.promociones i,
+header nav ul li a.inicio i {
+  font-size: 24px;
+}
+
+/* Agrandar los íconos al pasar el cursor */
+header nav ul li a:hover i {
+  transform: scale(1.3); /* Aumenta el tamaño del ícono al 130% */
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panadería Moderna</title>
+    <!-- Cargar Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/web/css/header.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <!-- Logo desde Google Drive -->
+            <img src="/uploads/Logito (1).png" alt="Logo de la Panadería">
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="/" class="inicio"><i class="fa fa-home"></i></a></li>
+
+                <!-- Mostrar "Usuarios" solo si la sesión NO está iniciada -->
+                <% if (!usuario) { %>
+                    <li><a href="/usuarios" class="usuarios"><i class="fa fa-user"></i></a></li>
+                <% } %>
+
+                <li><a href="/promocionesD" class="promociones"><i class="fa fa-gift"></i></a></li>
+
+                <!-- Mostrar "Administración" solo si el rol es igual a 1 -->
+                <% if (rol === 1) { %>
+                    <li><a href="/administracion" class="administracion"><i class="fa fa-cogs"></i></a></li>
+                <% } %>
+
+                <!-- Ícono y enlace para "Acerca de Nosotros" -->
+                <li><a href="/acerca-de-nosotros" class="acerca-de-nosotros"><i class="fa fa-info-circle"></i></a></li>
+
+                <!-- Mostrar "Cerrar Sesión" solo si la sesión está iniciada -->
+                <% if (usuario) { %>
+                    <li><a href="/logout" class="cerrar-sesion"><i class="fa fa-sign-out-alt"></i></a></li>
+                <% } %>
+            </ul>
+        </nav>
+    </header>
+
+</body>
+</html>

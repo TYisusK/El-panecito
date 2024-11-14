@@ -1,0 +1,131 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F4F4F9; /* Color de fondo suave */
+    color: #3D2312; /* Color de texto oscuro */
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #3D2312; /* Color del header */
+    padding: 10px 20px;
+    color: #fff;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+header nav a {
+    color: #FFFBF1;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #D9A56D;
+}
+
+/* Estilos del formulario */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #3D2312;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #CCC;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #3D2312;
+    box-shadow: 0 0 5px rgba(61, 35, 18, 0.4);
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="file"] {
+    padding: 8px 5px;
+}
+
+/* Botón de enviar */
+.submit-btn {
+    background-color: #3D2312;
+    color: #FFFBF1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #261610;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.2rem;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    .submit-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #3D2312;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+    color: #261610;
+    transform: scale(1.1);
+}

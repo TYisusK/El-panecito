@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="/web/css/productos/carrito.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('../templates/header') %>
+
+    <main class="container">
+        <h1>Carrito de Compras</h1>
+
+        <% if (productosCarrito && productosCarrito.length > 0) { %>
+            <div class="carrito-responsive">
+                <table class="tabla-carrito" id="tablaCarrito">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% productosCarrito.forEach(item => { %>
+                            <tr id="producto_<%= item.id %>">
+                                <td><%= item.nombre %></td>
+                                <td>$<span class="precio"><%= item.precio %></span></td>
+                                <td>
+                                    <input type="number" class="cantidad" id="cantidad_<%= item.id %>" value="<%= item.cantidad %>" min="1" data-id="<%= item.id %>" onchange="actualizarTotal()" />
+                                </td>
+                                <td><span class="total"><%= (item.precio * item.cantidad).toFixed(2) %></span></td>
+                                <td>
+                                    <button type="button" class="btn-eliminar" onclick="eliminarProducto('<%= item.id %>')">
+                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="total-carrito">
+                <p>Total: $<span id="totalCarrito"><%= productosCarrito.reduce((total, item) => total + (item.precio * item.cantidad), 0).toFixed(2) %></span></p>
+            </div>
+
+            <div class="informacion-pedido">
+                <p>Su pedido será enviado y podrá recogerlo en la sucursal en la siguiente dirección: Calle Principal 123, Tequisquiapan.</p>
+                <p>Para entrega a domicilio dentro del municipio de Tequisquiapan, puede realizar su pedido directamente y contactarse con nuestro operador. La compra mínima para envío gratuito es de $50.00 MXN.</p>
+            </div>
+
+            <div class="whatsapp-button">
+                <a href="#" id="whatsappLink" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Enviar al WhatsApp
+                </a>
+            </div>
+        <% } else { %>
+            <p>Tu carrito está vacío. Agrega productos para continuar con la compra.</p>
+        <% } %>
+    </main>
+
+    <%- include('../templates/footer') %>
+
+    <script>
+        function actualizarTotal() {
+            let totalCarrito = 0;
+            let productos = document.querySelectorAll('.tabla-carrito tbody tr');
+            
+            productos.forEach(producto => {
+                let cantidad = producto.querySelector('.cantidad').value;
+                let precio = parseFloat(producto.querySelector('.precio').innerText);
+                let total = cantidad * precio;
+                producto.querySelector('.total').innerText = total.toFixed(2);
+                totalCarrito += total;
+            });
+            
+            document.getElementById('totalCarrito').innerText = totalCarrito.toFixed(2);
+            
+            let productosCarrito = [];
+            productos.forEach(producto => {
+                let nombre = producto.querySelector('td:first-child').innerText;
+                let precio = parseFloat(producto.querySelector('.precio').innerText);
+                let cantidad = producto.querySelector('.cantidad').value;
+                let total = (precio * cantidad).toFixed(2);
+                productosCarrito.push(`${nombre}: $${precio} x ${cantidad} = $${total}`);
+            });
+
+            const whatsappMessage = `Hola, me gustaría realizar la compra de los siguientes productos:\n\n${productosCarrito.join('\n')}\n\nTotal: $${totalCarrito.toFixed(2)}`;
+            document.getElementById('whatsappLink').href = `https://wa.me/4142791145?text=${encodeURIComponent(whatsappMessage)}`;
+        }
+
+        function eliminarProducto(idProducto) {
+            fetch(`/carrito/eliminar/${idProducto}`, {
+                method: 'GET'
+            }).then(response => {
+                if (response.ok) {
+                    const productoFila = document.getElementById(`producto_${idProducto}`);
+                    productoFila.remove();
+                    actualizarTotal();
+                } else {
+                    console.error('Error al eliminar el producto en el servidor');
+                }
+            }).catch(err => {
+                console.error('Error de conexión', err);
+            });
+        }
+    </script>
+</body>
+</html>

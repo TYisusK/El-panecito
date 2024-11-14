@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    <link rel="stylesheet" href="/web/css/productos/detallesProducto.css"> <!-- Archivo CSS para detalles del producto -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
+</head>
+<body>
+    <%- include('../templates/header') %>
+
+    <div class="detalle-producto-container">
+        <h1><%= producto.nombre %></h1>
+
+        <!-- Sección de imágenes -->
+        <div class="imagenes-producto">
+            <% producto.fotos.forEach(foto => { %>
+                <div class="imagen-wrapper">
+                    <img src="/uploads/productos/<%= foto %>" alt="Foto de <%= producto.nombre %>" class="imagen-producto">
+                </div>
+            <% }); %>
+        </div>
+
+        <!-- Información detallada del producto -->
+        <div class="info-producto">
+            <h2>Descripción</h2>
+            <p><%= producto.descripcion %></p>
+            
+            <h2>Precio</h2>
+            <p class="precio">$<%= producto.precio %></p>
+
+            <!-- Botones de acción -->
+            <div class="acciones">
+                <form action="/carrito/agregar/<%= producto.id %>" method="POST">
+                    <button type="submit" class="btn-agregar-carrito">
+                        <i class="fas fa-cart-plus"></i> Agregar al Carrito
+                    </button>
+                </form>
+                <a href="/" class="btn-volver">
+                    <i class="fas fa-arrow-left"></i> Volver al Catálogo
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../templates/footer') %>
+</body>
+</html>

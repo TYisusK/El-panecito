@@ -1,0 +1,39 @@
+/* Estilo general del pie de página */
+footer {
+  background-color: #D8C9A3; /* Beige suave */
+  color: #3D2312; /* Texto en marrón oscuro */
+  padding: 0.3cm;  /* Establecer el padding en 1cm */
+  text-align: center;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil en la parte superior */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Contenedor del texto */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Estilo del texto */
+footer p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 300; /* Texto más delgado para un toque elegante */
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+footer p:hover {
+  color: #1B5E20; /* Verde esmeralda al pasar el ratón */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  footer {
+      padding: 0.5cm; /* Mantener el padding de 1cm en pantallas pequeñas */
+  }
+
+  footer p {
+      font-size: 14px;
+  }
+}

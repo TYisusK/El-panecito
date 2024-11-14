@@ -1,0 +1,93 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F7F7F7;
+    color: #3D2312;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #3D2312;
+}
+
+/* Contenedor de productos */
+.producto-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #D0C8BD;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para cada producto */
+.producto {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.producto h2 {
+    margin-top: 0;
+    color: #3D2312;
+}
+
+.producto p {
+    color: #555;
+}
+
+.producto img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Estilo para las acciones de editar y borrar */
+.acciones {
+    margin-top: 10px;
+}
+
+.acciones i {
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.acciones .edit {
+    color: #3D2312;
+}
+
+.acciones .delete {
+    color: #E63946;
+}
+
+.acciones i:hover {
+    opacity: 0.7;
+}
+
+/* Botón de agregar producto */
+.add-product-btn {
+    background-color: #3D2312;
+    color: #fff;
+    padding: 15px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.add-product-btn:hover {
+    background-color: #2C1D10;
+}

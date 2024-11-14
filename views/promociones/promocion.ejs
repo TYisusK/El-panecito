@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Promoción</title>
+    <link rel="stylesheet" href="/web/css/promociones/promocion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <a href="/promocionesD" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    
+    <header>
+        <h1 class="titulo-principal">Detalles de la Promoción</h1>
+    </header>
+
+    <!-- Botón de volver a la página de inicio -->
+  
+
+    <main class="container">
+        <div class="producto-detalle">
+            <h2><%= promocion.titulo %></h2>
+            <p><%= promocion.descripcion %></p>
+
+            <!-- Mostrar imágenes juntas -->
+            <div class="imagenes-promocion">
+                <% promocion.fotos.forEach(foto => { %>
+                    <img src="/uploads/promociones/<%= foto %>" alt="Imagen de la promoción" class="promocion-img">
+                <% }); %>
+            </div>
+
+            <!-- Información adicional -->
+            <div class="informacion-adicional">
+                <p><strong>Fecha de inicio:</strong> <%= promocion.fechaInicio %></p>
+                <p><strong>Fecha de finalización:</strong> <%= promocion.fechaFinal %></p>
+            </div>
+
+            <!-- Nota para WhatsApp -->
+            <div class="nota-whatsapp">
+                <p>Para más detalles de la promoción, comunícate al WhatsApp.</p>
+            </div>
+
+            <!-- Botón de WhatsApp -->
+            <div class="whatsapp-button">
+                <a href="https://wa.me/4142791145?text=<%= encodeURIComponent(`Hola, quisiera obtener más información sobre la promoción: ${promocion.titulo}`) %>" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Obtener más información
+                </a>
+            </div>
+
+            <!-- Botón para regresar -->
+            <a href="/promocionesD" class="btn-regresar">Regresar</a>
+        </div>
+    </main>
+
+</body>
+</html>

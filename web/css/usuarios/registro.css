@@ -1,0 +1,252 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #D0C8BD;
+    color: #3D2312;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.form-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+}
+
+.form-box h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #3D2312;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-column {
+    width: 48%;
+}
+
+.input-box-v {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.image-preview {
+    width: 200px; /* Ajusta el tamaño del círculo */
+    height: 200px; /* Ajusta el tamaño del círculo */
+    border-radius: 50%; /* Hace el círculo */
+    border: 2px solid #D0C8BD; /* Color del borde */
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+}
+
+input[type="file"] {
+    display: none; /* Ocultar el botón de entrada de archivo */
+}
+
+.btn-upload {
+    background-color: #3D2312; /* Color de fondo del botón */
+    color: #fff; /* Color del texto */
+    padding: 10px 15px; /* Espaciado */
+    border: none; /* Sin borde */
+    border-radius: 6px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones */
+}
+
+.btn-upload:hover {
+    background-color: #261610; /* Color al pasar el mouse */
+    transform: scale(1.05); /* Efecto de escala */
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.input-box label {
+    font-size: 14px;
+    color: #3D2312;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.input-box .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: #3D2312;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px 5px 10px 15px;
+    font-size: 16px;
+    color: #3D2312;
+    border: 1px solid #D0C8BD;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-box input:focus {
+    border-color: #3D2312;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.role-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.role-checkbox input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3D2312;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.role-checkbox input[type="checkbox"]:checked {
+    background-color: #3D2312;
+    border-color: #3D2312;
+}
+
+.role-checkbox input[type="checkbox"]:checked::before {
+    content: "✔"; /* Check mark */
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ajustes para el botón de registro */
+.btnLog {
+    width: 100%;
+    background-color: #3D2312;
+    color: #fff;
+    padding: 10px; /* Espaciado reducido */
+    width: 200px;
+    font-size: 14px; /* Tamaño de fuente reducido */
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btnLog:hover {
+    background-color: #261610;
+    transform: scale(1.1); /* Aumento al pasar el mouse */
+}
+
+.login-register {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.login-register a {
+    color: #3D2312;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.login-register a:hover {
+    color: #261610;
+    transform: scale(1.05);
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #3D2312;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+    color: #261610;
+    transform: scale(1.1);
+}
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .input-container {
+        flex-direction: column;
+    }
+
+    .input-column {
+        width: 100%;
+    }
+
+    .btnLog {
+        width: 100%;
+    }
+
+    .image-preview {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-box {
+        padding: 15px;
+    }
+
+    .form-box h2 {
+        font-size: 24px;
+    }
+
+    .btnLog {
+        font-size: 12px;
+    }
+}
+
+
+.error-message {
+    color: #D8000C;
+    background-color: #FFBABA;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}

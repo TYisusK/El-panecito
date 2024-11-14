@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Nuevo Producto</title>
+    <link rel="stylesheet" href="/web/css/productos/altaProductos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+   
+
+
+        <!-- Botón de volver a la página de inicio -->
+        <a href="/productos" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    <!-- Contenido Principal -->
+    <main class="wrapper">
+        <div class="form-box">
+            <h2>Agregar Nuevo Producto</h2>
+            <form action="/producto/nuevo" method="POST" enctype="multipart/form-data">
+                <div class="input-container">
+                    <div class="input-column">
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="image"></ion-icon></span>
+                            <label for="fotos" class="file-upload-btn">Seleccionar Imágenes</label>
+                            <input class="form-control mb-3" type="file" name="fotos" id="fotos" accept="image/*" multiple required>
+                        </div>
+                        <div id="image-preview-container" class="image-preview-container"></div>
+                    </div>
+
+                    <div class="input-column">
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="cube"></ion-icon></span>
+                            <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Nombre del Producto" required>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="create"></ion-icon></span>
+                            <textarea class="form-control mb-3" name="descripcion" id="descripcion" placeholder="Descripción del Producto" required></textarea>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="pricetag"></ion-icon></span>
+                            <input class="form-control mb-3" type="number" name="precio" id="precio" placeholder="Precio" step="0.01" required>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="albums"></ion-icon></span>
+                            <input class="form-control mb-3" type="text" name="categoria" id="categoria" placeholder="Categoría" required>
+                        </div>
+
+                        <div class="role-checkbox">
+                            <!-- Este input hidden enviará "off" si el checkbox no está marcado -->
+                            <input type="hidden" name="visible" value="off">
+                            
+                            <!-- Checkbox que enviará "on" si está marcado -->
+                            <input type="checkbox" name="visible" id="visible" value="on">
+                            <label for="visible">Visible</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btnLog">Guardar Producto</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    
+    
+
+    <script>
+        document.getElementById('fotos').addEventListener('change', function(event) {
+            const previewContainer = document.getElementById('image-preview-container');
+            previewContainer.innerHTML = ''; // Limpiar cualquier vista previa anterior
+            
+            const files = event.target.files;
+            if (files) {
+                Array.from(files).forEach(file => {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        previewContainer.appendChild(img); // Añadir la imagen al contenedor
+                    };
+                    
+                    reader.readAsDataURL(file); // Leer la imagen como URL de datos
+                });
+            }
+        });
+    </script>
+</body>
+</html>

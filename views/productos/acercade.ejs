@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de Nosotros</title>
+    <style>
+        /* Estilos generales */
+        body {
+            background: linear-gradient(45deg, #F5F2ED, #E8D9B3);
+            font-family: 'Arial', sans-serif;
+            color: #3D2312;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s ease;
+        }
+
+        header {
+            background-color: #3D2312;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 5px solid #5a3822;
+            font-family: 'Georgia', serif;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 40px;
+            margin: 0;
+        }
+
+        h2 {
+            color: #3D2312;
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-family: 'Georgia', serif;
+            text-transform: uppercase;
+        }
+
+        .text-image-block {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background-color: white;
+        }
+
+        .text-image-block:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-image-block:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .text-image-block .text {
+            width: 48%;
+            font-size: 16px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .text-image-block .image {
+            width: 48%;
+            max-width: 500px;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text-image-block img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .text-image-block img:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            color: #3D2312;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .contact-info h4 {
+            font-size: 22px;
+            color: #3D2312;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #3D2312;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-top: 5px solid #5a3822;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .text-image-block {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .text-image-block .text,
+            .text-image-block .image {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 30px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .text-image-block .text,
+            .text-image-block .image {
+                width: 100%;
+            }
+
+            .contact-info h4 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <%- include('../templates/header') %>
+
+    <!-- Contenido principal -->
+    <div class="container">
+
+        <!-- Bloque 1: Texto a la izquierda, imagen a la derecha -->
+        <div class="text-image-block">
+            <div class="text">
+                <h2>Nuestra Historia</h2>
+                <p>El 14 de enero de 2022 nació nuestra panadería, un negocio familiar creado con amor y dedicación. Emprendimos este proyecto con el sueño de estar más cerca de nuestros hijos y ofrecerles una estabilidad mientras compartíamos con ellos cada momento importante. Gracias al conocimiento de mi suegra en la elaboración de pan, decidimos aprovechar nuestros recursos y abrir nuestra propia panadería.</p>
+                <p>Mi suegra se encarga de hornear el pan fresco cada día y de mantener todo en perfecto orden. Mi esposo, siempre dispuesto, colabora con las entregas para que cada pedido llegue puntual a nuestros clientes. Yo soy quien maneja la promoción, toma los pedidos y organiza las entregas, asegurándome de que cada cliente reciba un servicio cálido y personalizado.</p>
+                <p>Este negocio es más que una panadería; es una extensión de nuestra familia. Cada pan que sale de nuestro horno está hecho con la misma dedicación y cariño que ponemos en nuestro hogar.</p>
+            </div>
+            <div class="image">
+                <img src="https://www.actualidadviajes.com/wp-content/uploads/2017/04/facturas.jpg" alt="Panadería" />
+            </div>
+        </div>
+
+        <!-- Bloque 2: Imagen a la izquierda, texto a la derecha, con mapa integrado -->
+        <div class="text-image-block">
+            <div class="text">
+                <h2>Contacto</h2>
+                <h4>Puedes contactarnos por medio de:</h4>
+                <div class="contact-info">
+                    <p>Whatsapp: <strong>4142261063</strong></p>
+                    <p>Facebook: <strong>El Panecito</strong></p>
+                    <p>Ubicación: <strong>265 Ficus</strong></p>
+                </div>
+            </div>
+            <div class="image">
+                <!-- Mapa de Google Maps -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.839853883343!2d-121.915626!3d37.3881705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcae9ae7ae3ef%3A0x35af9bf5d0fd9ea3!2s265%20Ficus!5e0!3m2!1ses!2sus!4v1612302329287!5m2!1ses!2sus" 
+                    width="400" 
+                    height="300" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Pie de página -->
+    <%- include('../templates/footer') %>
+
+</body>
+</html>

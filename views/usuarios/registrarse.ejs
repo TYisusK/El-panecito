@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuarios</title>
+    <link rel="stylesheet" href="/web/css/usuarios/registro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/collection/components/icon/icon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="/web/js/registro.js" defer></script>
+</head>
+
+<body>
+    <a href="/" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    <div class="wrapper">
+        <div class="form-box register">
+            <h2>Regístrate</h2>
+
+            <!-- Mostrar el mensaje de error si existe -->
+            <% if (typeof error !== 'undefined') { %>
+                <p class="error-message"><%= error %></p>
+            <% } %>
+
+            <form action="/nuevousuario" method="post" enctype="multipart/form-data">
+                <div class="input-container">
+                    <div class="input-column">
+                        <div class="input-box-v">
+                            <div class="image-preview" id="imagePreview"></div>
+                            <span class="icon"><ion-icon name="camera"></ion-icon></span>
+                            <input class="form-control mb-3" type="file" name="foto" id="foto" accept="image/*" onchange="previewImage(event)">
+                            <button type="button" class="btn-upload" onclick="document.getElementById('foto').click();">Seleccionar Imagen</button>
+                        </div>
+                    </div>
+
+                    <div class="input-column">
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="person"></ion-icon></span>
+                            <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Nombre" autofocus required>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="person"></ion-icon></span>
+                            <input class="form-control mb-3" type="text" name="usuario" id="usuario" placeholder="Usuario">
+                        </div>
+
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                            <input type="password" class="form-control mb-3" name="password" id="password" placeholder="Crea una Contraseña" required>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                            <input type="password" class="form-control mb-3" name="password_verificar" id="password_verificar" placeholder="Repite la Contraseña" required>
+                        </div>
+
+                        <!-- Campo oculto para enviar 0 si el checkbox no está marcado -->
+                        <input type="hidden" name="rol" value="0">
+
+                        <!-- Checkbox para enviar 1 cuando esté marcado -->
+                        <div class="role-checkbox">
+                            <input type="checkbox" name="rol" id="rol" value="1">
+                            <label for="rol">Rol de administrador</label>
+                        </div>
+                        
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="key"></ion-icon></span>
+                            <input type="password" class="form-control mb-3" name="clave_secreta" id="clave_secreta" placeholder="Clave Secreta" required>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btnLog">Registrarme</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

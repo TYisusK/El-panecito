@@ -1,0 +1,131 @@
+/* CSS Styles */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #D0C8BD;
+    color: #3D2312;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center; /* Center-align all content */
+}
+
+.card-header {
+    margin-bottom: 20px; /* Space below the header */
+}
+
+.card-header h1 {
+    font-size: 24px;
+    color: #3D2312;
+    margin-bottom: 20px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-body label {
+    font-size: 14px;
+    color: #3D2312;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left; /* Align labels to the left for readability */
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #D0C8BD;
+    border-radius: 6px;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+.form-control:focus {
+    border-color: #3D2312;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.form-check-label {
+    font-size: 14px;
+    color: #3D2312;
+    margin-left: 5px;
+}
+
+.btn {
+    background-color: #3D2312;
+    color: #fff;
+    padding: 8px 16px; /* Smaller button */
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    width: auto;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: #261610;
+    transform: scale(1.05);
+}
+
+.image-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.image-preview img,
+.preview-img {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #3D2312;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+    color: #261610;
+    transform: scale(1.1);
+}

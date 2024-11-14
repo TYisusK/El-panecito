@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Usuarios - Almacén</title>
+    <link rel="stylesheet" href="/web/css/usuarios/adminUsuarios.css">
+</head>
+<body>
+    <%- include('../templates/header') %> <!-- Header incluido -->
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1><i class="fas fa-boxes"></i> Administración de Usuarios - Almacén</h1>
+                <p class="subtitle">Gestión de acceso y perfiles del almacén</p>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Usuario</th>
+                            <th>Password</th>
+                            <th>Foto</th>
+                            <th>Editar/Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% usuarios.forEach((usuario, i) => { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= usuario.nombre %></td>
+                            <td><%= usuario.usuario %></td>
+                            <td>*****</td>
+                            <td><img src="uploads/images/<%= usuario.foto %>" class="user-photo" alt="Foto de usuario"></td>
+                            <td>
+                                <a href="/editar/<%= usuario.id %>" class="btn btn-edit">Editar</a>
+                                <a href="/borrar/<%= usuario.id %>" class="btn btn-delete">Borrar</a>
+                            </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a href="/registrarUsuario" class="btn btn-add-user">Añadir nuevo usuario</a>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Font Awesome para los iconos -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <%- include('../templates/footer') %> <!-- Footer incluido -->
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Promociones</title>
+    <link rel="stylesheet" href="/web/css/promociones/adminPromociones.css">
+    <!-- Cargar FontAwesome para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <%- include('../templates/header') %>
+
+    <div class="container">
+            <h1>Lista de Promociones</h1>
+
+        <div class="actions">
+            <a href="/promociones/nueva" class="btn-new">Agregar Nueva Promoción</a>
+        </div>
+
+        <table class="promotions-table">
+            <thead>
+                <tr>
+                    <th>Descripción</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Fecha Final</th>
+                    <th>Descuento</th>
+                    <th>Visible</th>
+                    <th>Fotos</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% promociones.forEach(promocion => { %>
+                <tr>
+                    <td><%= promocion.descripcion %></td>
+                    <td><%= promocion.fechaInicio %></td>
+                    <td><%= promocion.fechaFinal %></td>
+                    <td><%= promocion.descuento %></td>
+                    <td><%= promocion.visible === 'on' ? 'Sí' : 'No' %></td>
+                    <td>
+                        <div class="carousel-container">
+                            <% promocion.fotos.forEach((foto, index) => { %>
+                                <div class="carousel-slide" id="carousel-slide-<%= promocion.id %>-<%= index %>">
+                                    <img src="/uploads/promociones/<%= foto %>" alt="Foto de la promoción" class="carousel-img">
+                                </div>
+                            <% }) %>
+                        </div>
+                    </td>
+                    <td>
+                        <!-- Botones de acción con iconos -->
+                        <a href="/promociones/editar/<%= promocion.id %>" class="btn-edit"><i class="fas fa-edit"></i></a>
+                        <a href="/promociones/eliminar/<%= promocion.id %>" onclick="return confirm('¿Estás seguro de eliminar esta promoción?')" class="btn-delete"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Función para iniciar el carrusel
+    function startCarousel() {
+        const carousels = document.querySelectorAll('.carousel-container');
+
+        carousels.forEach(carousel => {
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            let currentSlide = 0;
+
+            function changeSlide() {
+                // Ocultar todos los slides
+                slides.forEach(slide => slide.classList.remove('active'));
+                
+                // Mostrar el siguiente slide
+                slides[currentSlide].classList.add('active');
+                
+                // Avanzar al siguiente slide
+                currentSlide = (currentSlide + 1) % slides.length;
+            }
+
+            // Iniciar el carrusel con un intervalo de 3 segundos
+            setInterval(changeSlide, 3000);
+            changeSlide();  // Mostrar el primer slide de inmediato
+        });
+    }
+
+    startCarousel();
+});
+
+    </script>
+
+<%- include('../templates/footer') %>
+</body>
+
+</html>

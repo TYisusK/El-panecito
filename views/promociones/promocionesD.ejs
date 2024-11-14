@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promociones Disponibles</title>
+    <link rel="stylesheet" href="/web/css/promociones/promocionesD.css">
+    <!-- Incluir FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <%- include('../templates/header') %>
+
+
+    <h1>Promociones Disponibles</h1>
+
+
+    <main>
+        <!-- Contenedor de promociones -->
+        <div class="promociones-container">
+            <% promociones.forEach(promocion => { %>
+                <% if (promocion.visible === 'on') { %>
+                    <div class="promocion">
+                        <!-- Título de la promoción -->
+                        <h2><%= promocion.titulo %></h2>
+
+                        <!-- Descripción con límite de 200 caracteres -->
+                        <p class="descripcion">
+                            <%= promocion.descripcion.length > 200 ? promocion.descripcion.substring(0, 200) + '...' : promocion.descripcion %>
+                        </p>
+                        
+                        <!-- Descuento: Si es número, agregar porcentaje -->
+                        <p class="descuento">
+                            <%
+                                const descuento = promocion.descuento.trim();
+                                const descuentoNumero = parseFloat(descuento);
+                                if (!isNaN(descuentoNumero)) {
+                                    // Si el descuento es un número, agregar el % al final
+                                    %><%= descuentoNumero + "%" %><%
+                                } else {
+                                    // Si no es un número (es un texto como "Artículo gratis"), mostrar el texto tal cual
+                                    %><%= descuento %><%
+                                }
+                            %>
+                        </p>
+                        
+                        <!-- Fechas de la promoción -->
+                        <p class="fechas">Desde: <%= promocion.fechaInicio %> | Hasta: <%= promocion.fechaFinal %></p>
+                        
+                        <!-- Contenedor de fotos -->
+                        <div class="fotos">
+                            <% promocion.fotos.forEach(foto => { %>
+                                <div class="foto-container">
+                                    <img src="/uploads/promociones/<%= foto %>" alt="Foto de la promoción">
+                                </div>
+                            <% }) %>
+                        </div>
+
+                        <!-- Botón de llamada a la acción al final, sin importar el número de imágenes -->
+                        <div class="btn-ver-mas-container">
+                            <a href="/promociones/<%= promocion.id %>" class="btn-ver-mas">
+                                <i class="fas fa-eye"></i> <!-- Ícono de FontAwesome -->
+                            </a>
+                        </div>
+                    </div>
+                <% } %>
+            <% }) %>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <%- include('../templates/footer') %>
+
+</body>
+</html>
