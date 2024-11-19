@@ -31,7 +31,14 @@
                                 <td><%= item.nombre %></td>
                                 <td>$<span class="precio"><%= item.precio %></span></td>
                                 <td>
-                                    <input type="number" class="cantidad" id="cantidad_<%= item.id %>" value="<%= item.cantidad %>" min="1" data-id="<%= item.id %>" onchange="actualizarTotal()" />
+                                    <input type="number" 
+                                           class="cantidad" 
+                                           id="cantidad_<%= item.id %>" 
+                                           value="<%= item.cantidad %>" 
+                                           min="0" 
+                                           placeholder="0" 
+                                           data-id="<%= item.id %>" 
+                                           oninput="actualizarTotal()">
                                 </td>
                                 <td><span class="total"><%= (item.precio * item.cantidad).toFixed(2) %></span></td>
                                 <td>
@@ -72,20 +79,27 @@
             let productos = document.querySelectorAll('.tabla-carrito tbody tr');
             
             productos.forEach(producto => {
-                let cantidad = producto.querySelector('.cantidad').value;
+                let cantidadInput = producto.querySelector('.cantidad');
+                let cantidad = parseFloat(cantidadInput.value) || 0; // Si está vacío o no numérico, usar 0
                 let precio = parseFloat(producto.querySelector('.precio').innerText);
                 let total = cantidad * precio;
-                producto.querySelector('.total').innerText = total.toFixed(2);
+
+                // Si el total es NaN, poner 0.00
+                producto.querySelector('.total').innerText = isNaN(total) ? "0.00" : total.toFixed(2);
+
+                // Sumar al total del carrito
                 totalCarrito += total;
             });
-            
+
+            // Actualizar el total general del carrito
             document.getElementById('totalCarrito').innerText = totalCarrito.toFixed(2);
-            
+
+            // Generar el mensaje de WhatsApp
             let productosCarrito = [];
             productos.forEach(producto => {
                 let nombre = producto.querySelector('td:first-child').innerText;
                 let precio = parseFloat(producto.querySelector('.precio').innerText);
-                let cantidad = producto.querySelector('.cantidad').value;
+                let cantidad = parseFloat(producto.querySelector('.cantidad').value) || 0;
                 let total = (precio * cantidad).toFixed(2);
                 productosCarrito.push(`${nombre}: $${precio} x ${cantidad} = $${total}`);
             });
@@ -109,6 +123,9 @@
                 console.error('Error de conexión', err);
             });
         }
+
+        // Llamar a la función actualizarTotal para inicializar el total correctamente al cargar la página
+        document.addEventListener("DOMContentLoaded", actualizarTotal);
     </script>
 </body>
 </html>
