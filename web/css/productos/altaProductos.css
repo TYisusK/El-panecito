@@ -225,3 +225,7 @@ main.wrapper {
         padding: 20px;
     }
 }
+
+#fotos {
+    display: none;
+}
