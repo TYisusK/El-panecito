@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,41 +8,45 @@
     <!-- Cargar Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/web/css/header.css">
+    <link rel="stylesheet" href="/web/css/custom-header.css">
 </head>
+
 <body>
 
     <header>
         <div class="logo-container">
-            <!-- Logo desde Google Drive -->
+            <!-- Logo -->
             <img src="/uploads/Logito (1).png" alt="Logo de la Panadería">
         </div>
 
         <nav>
             <ul>
-                <li><a href="/" class="inicio"><i class="fa fa-home"></i></a></li>
+                <li><a href="/" class="inicio"><i class="fa fa-home"></i><span>Inicio</span></a></li>
 
                 <!-- Mostrar "Usuarios" solo si la sesión NO está iniciada -->
                 <% if (!usuario) { %>
-                    <li><a href="/usuarios" class="usuarios"><i class="fa fa-user"></i></a></li>
+                    <li><a href="/usuarios" class="usuarios"><i class="fa fa-user"></i><span>Usuarios</span></a></li>
                 <% } %>
 
-                <li><a href="/promocionesD" class="promociones"><i class="fa fa-gift"></i></a></li>
+                <li><a href="/promocionesD" class="promociones"><i class="fa fa-tags"></i><span>Promociones</span></a></li>
 
                 <!-- Mostrar "Administración" solo si el rol es igual a 1 -->
-                <% if (rol === 1) { %>
-                    <li><a href="/administracion" class="administracion"><i class="fa fa-cogs"></i></a></li>
+                <% if (rol===1) { %>
+                    <li><a href="/administracion" class="administracion"><i class="fa fa-user-cog"></i><span>Administración</span></a></li>
                 <% } %>
 
-                <!-- Ícono y enlace para "Acerca de Nosotros" -->
-                <li><a href="/nosotros" class="acerca-de-nosotros"><i class="fa fa-info-circle"></i></a></li>
+                <li><a href="/acerca-de-nosotros" class="acerca-de-nosotros"><i class="fa fa-info-circle"></i><span>Acerca de Nosotros</span></a></li>
 
-                <!-- Mostrar "Cerrar Sesión" solo si la sesión está iniciada -->
+                <!-- Mostrar el carrito -->
+                <li><a href="/carrito" class="carrito"><i class="fa fa-shopping-cart"></i><span>Carrito</span></a></li>
+
                 <% if (usuario) { %>
-                    <li><a href="/logout" class="cerrar-sesion"><i class="fa fa-sign-out-alt"></i></a></li>
+                    <li><a href="/logout" class="cerrar-sesion"><i class="fa fa-sign-out-alt"></i><span>Cerrar Sesión</span></a></li>
                 <% } %>
             </ul>
         </nav>
     </header>
 
 </body>
+
 </html>
