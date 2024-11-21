@@ -38,9 +38,20 @@
 
         <div class="form-group">
             <label for="categoria">Categoría</label>
-            <input type="text" id="categoria" name="categoria" value="<%= producto.categoria %>" required>
+            <div class="custom-select-container">
+                <button type="button" class="custom-select-btn" id="categoria-btn">
+                    <%= producto.categoria ? producto.categoria : "Selecciona una categoría" %>
+                </button>
+                <ul class="custom-select-options" id="categoria-options">
+                    <li data-value="Azucarado">Azucarado</li>
+                    <li data-value="Chocolate">Con chocolate</li>
+                    <li data-value="Agua">Agua</li>
+                   
+                </ul>
+            </div>
+            <input type="hidden" name="categoria" id="categoria" value="<%= producto.categoria %>">
         </div>
-
+        
         <div class="form-group">
             <label for="visible">Visible</label>
             <select id="visible" name="visible" required>
@@ -60,6 +71,38 @@
             <button type="submit" class="submit-btn">Guardar Cambios</button>
         </div>
     </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const categoriaBtn = document.getElementById('categoria-btn');
+    const categoriaOptions = document.getElementById('categoria-options');
+    const categoriaInput = document.getElementById('categoria');
+
+    // Mostrar/Ocultar opciones al hacer clic en el botón
+    categoriaBtn.addEventListener('click', () => {
+        categoriaOptions.classList.toggle('show');
+    });
+
+    // Seleccionar una opción
+    categoriaOptions.addEventListener('click', (e) => {
+        if (e.target.tagName === 'LI') {
+            const selectedValue = e.target.dataset.value;
+            const selectedText = e.target.textContent;
+            categoriaBtn.textContent = selectedText;
+            categoriaInput.value = selectedValue;
+            categoriaOptions.classList.remove('show');
+        }
+    });
+
+    // Cerrar el menú si se hace clic fuera
+    document.addEventListener('click', (e) => {
+        if (!categoriaBtn.contains(e.target) && !categoriaOptions.contains(e.target)) {
+            categoriaOptions.classList.remove('show');
+        }
+    });
+});
+
+    </script>
 </body>
 </html>
 
