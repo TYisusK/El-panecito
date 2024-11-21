@@ -178,6 +178,7 @@ main.wrapper {
     color: #261610;
     transform: scale(1.1);
 }
+
 /* Botón para subir archivos */
 .file-upload-btn {
     display: inline-block;
@@ -211,7 +212,7 @@ main.wrapper {
     border: 2px solid #D0C8BD;
 }
 
-/* Diseño responsivo */
+/* Responsividad */
 @media (max-width: 768px) {
     .input-container {
         flex-direction: column;
@@ -221,11 +222,78 @@ main.wrapper {
         width: 100%;
     }
 
-    .form-box {
-        padding: 20px;
+    .input-box {
+        margin-bottom: 20px;
     }
 }
+/* Contenedor del botón y opciones */
+.custom-select-container {
+    position: relative;
+    width: 100%;
+}
 
-#fotos {
+/* Botón principal */
+.custom-select-btn {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #3D2312;
+    background-color: #fff;
+    border: 1px solid #D0C8BD;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+    transition: 0.3s;
+}
+
+.custom-select-btn:hover {
+    background-color: #f4f2ee;
+    border-color: #3D2312;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Icono de flecha para el botón */
+.custom-select-btn::after {
+    content: "▼";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #3D2312;
+}
+
+/* Lista de opciones */
+.custom-select-options {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #D0C8BD;
+    border-radius: 6px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    margin: 5px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.custom-select-options li {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #3D2312;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.custom-select-options li:hover {
+    background-color: #f4f2ee;
+}
+
+/* Mostrar opciones cuando se active */
+.custom-select-options.show {
+    display: block;
 }
