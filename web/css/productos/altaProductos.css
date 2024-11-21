@@ -297,4 +297,32 @@ main.wrapper {
 .custom-select-options.show {
     display: block;
 }
+    #fotos {
+            display: none;
+        }
+
+        /* Personalización del botón */
+        .file-upload-btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .file-upload-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilos para la vista previa de imágenes */
+        #image-preview-container img {
+            max-width: 100px;
+            max-height: 100px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
