@@ -60,6 +60,24 @@ ruta.post("/nuevousuario", verificarSesion,verificarAdmin, subirArchivo(), async
     res.redirect("/usuarios");
 });
 
+ruta.post("/nuevousuarioR", subirArchivo(), async (req, res) => {
+    const { clave_secreta, nombre, usuario, password, password_verificar, rol } = req.body;
+
+    // Verificar que la clave secreta ingresada coincida con la clave en el archivo .env
+    if (clave_secreta !== process.env.CLAVE_SECRETA) {
+        // Renderiza la vista con un mensaje de error si la clave es incorrecta
+        return res.render('usuarios/agregarUsuario', { error: 'La clave secreta es incorrecta' });
+    }
+
+
+    // Si la clave es correcta, continuar con el registro del usuario
+    req.body.foto = req.file.originalname;
+    
+    var error = await nuevoUsuario(req.body);
+    
+    res.redirect("/usuarios");
+});
+
 // Ruta para mostrar usuarios con validación de clave
 ruta.get("/usuarios",verificarSesion, verificarAdmin, async (req, res) => {
 
