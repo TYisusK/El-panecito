@@ -8,7 +8,8 @@ function verificarSesion(req, res, next) {
 
 function verificarAdmin(req, res, next) {
     console.log(req.session); // Verificar qué contiene la sesión
-    if (req.session (req.session.rol) == "1") {
+    // Convertir el rol a cadena para comparar de forma consistente
+    if (req.session && String(req.session.rol) === '1') {
         next();
     } else {
         res.render('templates/noAuto', { mensaje: 'Acceso no autorizado' });
